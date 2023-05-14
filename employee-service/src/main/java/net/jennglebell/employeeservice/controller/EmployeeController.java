@@ -1,6 +1,7 @@
 package net.jennglebell.employeeservice.controller;
 
 import lombok.AllArgsConstructor;
+import net.jennglebell.employeeservice.dto.APIResponseDto;
 import net.jennglebell.employeeservice.dto.EmployeeDto;
 import net.jennglebell.employeeservice.service.EmployeeService;
 import org.springframework.http.HttpStatus;
@@ -22,8 +23,8 @@ public class EmployeeController {
 
     // get employee REST API
     @GetMapping("{employee_id}")
-    public ResponseEntity<EmployeeDto> getEmployee(@PathVariable("employee_id") Long employeeId) {
-        EmployeeDto employeeDto = employeeService.getEmployee(employeeId);
-        return new ResponseEntity<>(employeeDto, HttpStatus.OK);
+    public ResponseEntity<APIResponseDto> getEmployee(@PathVariable("employee_id") Long employeeId) {
+        APIResponseDto apiResponseDto = employeeService.getEmployee(employeeId);
+        return new ResponseEntity<>(apiResponseDto, HttpStatus.OK);
     }
 }
