@@ -14,7 +14,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @AllArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository;
-    private WebClient webClient;
+    private final WebClient.Builder webClientBuilder;
 
     @Override
     public EmployeeDto saveEmployee(EmployeeDto employeeDto) {
@@ -42,8 +42,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public APIResponseDto getEmployee(Long employeeId) {
         Employee employee = employeeRepository.findById(employeeId).get();
 
+        WebClient webClient = webClientBuilder.build();
         DepartmentDto departmentDto = webClient.get()
-                .uri("http://localhost:8080/api/departments/" + employee.getDepartmentCode())
+                .uri("http://DEPARTMENT-SERVICE/api/departments/" + employee.getDepartmentCode())
                 .retrieve()
                 .bodyToMono(DepartmentDto.class)
                 .block();
