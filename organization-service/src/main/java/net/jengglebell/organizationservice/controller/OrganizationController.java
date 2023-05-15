@@ -1,9 +1,7 @@
 package net.jengglebell.organizationservice.controller;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import net.jengglebell.organizationservice.dto.OrganizationDto;
-import net.jengglebell.organizationservice.entity.Organization;
 import net.jengglebell.organizationservice.service.OrganizationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

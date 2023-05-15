@@ -1,6 +1,5 @@
 package net.jengglebell.organizationservice.repository;
 
-import net.jengglebell.organizationservice.dto.OrganizationDto;
 import net.jengglebell.organizationservice.entity.Organization;
 import org.springframework.data.jpa.repository.JpaRepository;
 

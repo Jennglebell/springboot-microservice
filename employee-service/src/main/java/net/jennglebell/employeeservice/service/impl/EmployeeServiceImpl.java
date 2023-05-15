@@ -1,7 +1,6 @@
 package net.jennglebell.employeeservice.service.impl;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-import io.github.resilience4j.retry.annotation.Retry;
 import lombok.AllArgsConstructor;
 import net.jennglebell.employeeservice.Mapper.EmployeeMapper;
 import net.jennglebell.employeeservice.dto.APIResponseDto;
