@@ -7,6 +7,7 @@ import net.jennglebell.employeeservice.Mapper.EmployeeMapper;
 import net.jennglebell.employeeservice.dto.APIResponseDto;
 import net.jennglebell.employeeservice.dto.DepartmentDto;
 import net.jennglebell.employeeservice.dto.EmployeeDto;
+import net.jennglebell.employeeservice.dto.OrganizationDto;
 import net.jennglebell.employeeservice.entity.Employee;
 import net.jennglebell.employeeservice.repository.EmployeeRepository;
 import net.jennglebell.employeeservice.service.EmployeeService;
@@ -41,11 +42,18 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .bodyToMono(DepartmentDto.class)
                 .block();
 
+        OrganizationDto organizationDto = webClient.get()
+                .uri("http://localhost:8083/api/organizations/" + employee.getOrganizationCode())
+                .retrieve()
+                .bodyToMono(OrganizationDto.class)
+                .block();
+
         EmployeeDto employeeDto = EmployeeMapper.mapToEmployeeDto(employee);
 
         APIResponseDto apiResponseDto = new APIResponseDto();
         apiResponseDto.setEmployeeDto(employeeDto);
         apiResponseDto.setDepartmentDto(departmentDto);
+        apiResponseDto.setOrganizationDto(organizationDto);
 
         return apiResponseDto;
     }
