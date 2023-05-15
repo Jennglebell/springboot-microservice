@@ -1,4 +1,4 @@
-package net.jennglebell.departmentservice.controller;
+package net.jennglebell.employeeservice.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -12,7 +12,7 @@ public class MessageController {
     @Value("${spring.boot.message}")
     private String message;
 
-    @GetMapping("message")
+    @GetMapping("/users/message")
     public String message() {
         return message;
     }
